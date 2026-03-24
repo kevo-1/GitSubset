@@ -1,0 +1,3 @@
+# GitSubset
+
+Initial repository setup.
