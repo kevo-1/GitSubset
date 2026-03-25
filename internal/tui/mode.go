@@ -7,8 +7,6 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
-// ---------- update ----------
-
 func (m Model) updateModeSelect(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
@@ -77,7 +75,7 @@ func (m Model) viewModeSelect() string {
 		"Browse and select individual files to download",
 	}
 
-	icons := []string{"📦", "📁", "📄"}
+	icons := []string{"[≡]", "[▸]", "[·]"}
 
 	for i, choice := range m.modeChoices {
 		cursor := "  "

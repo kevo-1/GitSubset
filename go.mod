@@ -1,4 +1,4 @@
-module GitSubset
+module github.com/kevo-1/GitSubset
 
 go 1.25.7
 

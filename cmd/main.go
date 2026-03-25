@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"GitSubset/internal/tui"
+	"github.com/kevo-1/GitSubset/internal/tui"
 
 	tea "github.com/charmbracelet/bubbletea"
 )

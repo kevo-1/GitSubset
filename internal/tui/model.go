@@ -5,7 +5,7 @@ import (
 	"os"
 	"strings"
 
-	"GitSubset/internal"
+	"github.com/kevo-1/GitSubset/internal"
 
 	"github.com/charmbracelet/bubbles/spinner"
 	"github.com/charmbracelet/bubbles/textinput"

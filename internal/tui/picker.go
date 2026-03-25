@@ -161,7 +161,6 @@ func (pm *PickerModel) collectSelectedDirs(node *treeNode, result *[]string) {
 	}
 }
 
-// toggle selection of the item at cursor.
 func (pm *PickerModel) toggleCurrent() {
 	if pm.cursor < 0 || pm.cursor >= len(pm.flatList) {
 		return
@@ -174,7 +173,6 @@ func (pm *PickerModel) toggleCurrent() {
 		}
 	} else {
 		if node.isDir {
-			// Toggle all children recursively
 			newState := !pm.allChildrenSelected(node)
 			pm.setChildrenSelected(node, newState)
 			node.selected = newState
@@ -206,7 +204,6 @@ func (pm *PickerModel) setChildrenSelected(node *treeNode, state bool) {
 	}
 }
 
-// toggleExpand expands or collapses a directory.
 func (pm *PickerModel) toggleExpand() {
 	if pm.cursor < 0 || pm.cursor >= len(pm.flatList) {
 		return
@@ -215,14 +212,12 @@ func (pm *PickerModel) toggleExpand() {
 	if node.isDir {
 		node.expanded = !node.expanded
 		pm.rebuildFlatList()
-		// Ensure cursor is still valid
 		if pm.cursor >= len(pm.flatList) {
 			pm.cursor = len(pm.flatList) - 1
 		}
 	}
 }
 
-// selectAll toggles selection of all visible items.
 func (pm *PickerModel) selectAll() {
 	allSelected := true
 	for _, node := range pm.flatList {
@@ -370,12 +365,12 @@ func (m Model) viewPicker() string {
 		var icon string
 		if node.isDir {
 			if node.expanded {
-				icon = "▾ 📁 "
+				icon = "▾ ■ "
 			} else {
-				icon = "▸ 📁 "
+				icon = "▸ ■ "
 			}
 		} else {
-			icon = "  📄 "
+			icon = "  · "
 		}
 
 		// Name
