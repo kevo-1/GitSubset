@@ -19,16 +19,16 @@ jobs:
                   go-version: "1.25"
 
             - name: Build Windows amd64
-              run: GOOS=windows GOARCH=amd64 go build -o gitsubset-windows-amd64.exe ./cmd
+              run: GOOS=windows GOARCH=amd64 go build -o gitsubset-windows-amd64.exe ./gitsubset
 
             - name: Build Linux amd64
-              run: GOOS=linux GOARCH=amd64 go build -o gitsubset-linux-amd64 ./cmd
+              run: GOOS=linux GOARCH=amd64 go build -o gitsubset-linux-amd64 ./gitsubset
 
             - name: Build macOS amd64
-              run: GOOS=darwin GOARCH=amd64 go build -o gitsubset-darwin-amd64 ./cmd
+              run: GOOS=darwin GOARCH=amd64 go build -o gitsubset-darwin-amd64 ./gitsubset
 
             - name: Build macOS arm64
-              run: GOOS=darwin GOARCH=arm64 go build -o gitsubset-darwin-arm64 ./cmd
+              run: GOOS=darwin GOARCH=arm64 go build -o gitsubset-darwin-arm64 ./gitsubset
 
             - name: Create Release
               uses: softprops/action-gh-release@v2
