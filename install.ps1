@@ -7,7 +7,7 @@ Write-Host "Fetching latest release from $repo..."
 $release = Invoke-RestMethod -Uri "https://api.github.com/repos/$repo/releases/latest"
 
 # Find the Windows binary asset
-$asset = $release.assets | Where-Object { $_.name -match "windows_amd64|windows_x86_64" -and $_.name -match "\.exe$" }
+$asset = $release.assets | Where-Object { $_.name -match "windows[-_]amd64|windows[-_]x86_64" -and $_.name -match "\.exe$" }
 
 if (-not $asset) {
     Write-Error "Could not find a Windows .exe binary in the latest release. Are you sure Goreleaser successfully built it?"

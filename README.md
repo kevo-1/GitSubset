@@ -7,13 +7,13 @@ A tool to quickly download specific folders or files from a git repository.
 ### For Mac and Linux (Bash)
 
 ```bash
-curl -sL https://raw.githubusercontent.com/kevo-1/GitSubset/main/install.sh | bash
+curl -sL https://raw.githubusercontent.com/kevo-1/GitSubset/master/install.sh | bash
 ```
 
 ### For Windows (PowerShell)
 
 ```powershell
-irm https://raw.githubusercontent.com/kevo-1/GitSubset/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/kevo-1/GitSubset/master/install.ps1 | iex
 ```
 
 ### For Go Users (Any OS)
