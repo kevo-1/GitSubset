@@ -2,16 +2,17 @@ package internal
 
 import (
 	"errors"
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
 )
 
 func Clone(URL string) (GithubLink, error) {
-	link, err := parseURL(URL)
+	link, err := ParseURL(URL)
 	
 	if err != nil {
-		return GithubLink{}, err
+		return GithubLink{}, fmt.Errorf("Invalid repo link\nerror: %w", err)
 	}
 
 	ok, err := checkRepoExist(URL)
@@ -24,6 +25,7 @@ func Clone(URL string) (GithubLink, error) {
 	}
 
 	dest, err := filepath.Abs(link.Repo)
+	
 	if err != nil {
 		return GithubLink{}, err
 	}
@@ -48,7 +50,7 @@ func checkRepoExist(URL string) (bool, error) {
 
 	err := cmd.Run()
 	if err != nil {
-		return false, err
+		return false, fmt.Errorf("Repo not found\nerror: %w", err)
 	}
 
 	return true, nil

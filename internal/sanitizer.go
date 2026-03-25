@@ -12,7 +12,7 @@ type GithubLink struct {
 	Path string
 }
 
-func parseURL(URL string) (GithubLink, error) {
+func ParseURL(URL string) (GithubLink, error) {
 	if strings.HasPrefix(URL, "git@") {
 		URL = strings.Replace(URL, "git@github.com:", "https://github.com/", 1)
 	}

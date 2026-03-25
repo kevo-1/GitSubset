@@ -1,33 +1,24 @@
 package main
 
 import (
-	"GitSubset/internal"
 	"fmt"
+	"os"
+
+	"GitSubset/internal/tui"
+
+	tea "github.com/charmbracelet/bubbletea"
 )
 
 func main() {
-	link, err := internal.Clone("https://github.com/kevo-1/Concepts-of-Programming-Languages-Course")
+	p := tea.NewProgram(tui.NewModel(), tea.WithAltScreen())
 
+	m, err := p.Run()
 	if err != nil {
-		fmt.Println(err.Error())
-		return
-	} else {
-		fmt.Printf("User: %s\nRepo Name: %s\n", link.User, link.Repo)
+		fmt.Fprintf(os.Stderr, "Error running GitSubset: %v\n", err)
+		os.Exit(1)
 	}
 
-	files, err := internal.ListContent(link.Path)
-
-	if err != nil {
-		fmt.Println(err.Error())
-	} else {
-		for i := range files {
-			fmt.Printf("    %s\n", files[i])
-		}
-	}
-
-	chosen := []string{"Functional-Programming/Lecture-4/practiceLec.scala", "Functional-Programming/Lecture-3/higherOrderFunctions.scala"}
-
-	if err := internal.FetchContent(link.Path, chosen); err != nil {
-		fmt.Println(err.Error())
+	if model, ok := m.(tui.Model); ok {
+		model.Cleanup()
 	}
 }
