@@ -31,7 +31,7 @@ func Clone(URL string) (GithubLink, error) {
 	}
 
 	if _, statErr := os.Stat(dest); os.IsNotExist(statErr) {
-		args := []string{"git", "clone", "--filter=blob:none", "--no-checkout", URL}
+		args := []string{"git", "clone", "--depth=1", "--filter=blob:none", "--no-checkout", URL}
 		cmd := exec.Command(args[0], args[1:]...)
 
 		err = cmd.Run()
